@@ -5,22 +5,17 @@ export type UserDocument = UserSchema & Document;
 
 @Schema()
 export class UserSchema {
-	@Prop(
-		raw({
-			firstName: String,
-			lastName: String
-		})
-	)
-	name: Record<string, any>;
+  @Prop({ type: String, enum: ['Roshan', 'Rohan'] })
+  name: string;
 
-	@Prop(Number)
-	age: number;
+  @Prop({ type: Number, min: 18, max: 25 })
+  age: number;
 
-	@Prop({ required: true, unique:true })
-	email: string;
+  @Prop({ required: true, unique: true })
+  email: string;
 
-	@Prop({ required: true })
-	password: string;
+  @Prop({ required: true })
+  password: string;
 }
 
 export const userSchema = SchemaFactory.createForClass(UserSchema);

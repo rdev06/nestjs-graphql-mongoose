@@ -1,25 +1,19 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
-
-@InputType()
-class NameInput {
-	@Field()
-	readonly firstName?: string;
-
-	@Field()
-	readonly lastName?: string;
-}
+import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
 export class UserInput {
-	@Field(() => NameInput)
-	readonly name: NameInput;
+  @Field(() => String)
+  readonly name: string;
 
-	@Field(() => Int)
-	readonly age?: number;
+  @Field(() => Int)
+  readonly age?: number;
 
-	@Field()
-	readonly email: string;
+  @Field()
+  readonly email: string;
 
-	@Field()
-	readonly password: string;
+  @Field()
+  readonly password: string;
 }
+
+@InputType()
+export class UpdateUserInput extends PartialType(UserInput) {}
