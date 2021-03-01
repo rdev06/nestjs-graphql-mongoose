@@ -16,7 +16,7 @@ export class UserSchema {
 	@Prop(Number)
 	age: number;
 
-	@Prop({ required: true })
+	@Prop({ required: true, unique:true })
 	email: string;
 
 	@Prop({ required: true })
